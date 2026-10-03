@@ -22,6 +22,8 @@
     line-height: 1.6;
     overflow-x: hidden;
   }
+
+  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -51,8 +53,8 @@
     transition: color 0.3s;
   }
   .nav-links a:hover { color: #fff; }
-  .hire-btn {
-    padding: 10px 22px;
+  .collab-btn {
+    padding: 10px 24px;
     border: 1px solid rgba(255,255,255,0.25);
     border-radius: 50px;
     color: #fff;
@@ -60,10 +62,12 @@
     font-size: 0.9rem;
     transition: all 0.3s;
   }
-  .hire-btn:hover {
+  .collab-btn:hover {
     background: #fff;
     color: #000;
   }
+
+  /* HERO */
   .hero {
     min-height: 100vh;
     display: grid;
@@ -108,9 +112,12 @@
     text-decoration: none;
     font-weight: 500;
     font-size: 0.95rem;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
   }
-  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255,255,255,0.15);
+  }
   .btn-secondary {
     background: transparent;
     color: #fff;
@@ -119,7 +126,9 @@
     border: 1px solid rgba(255,255,255,0.25);
     text-decoration: none;
     font-size: 0.95rem;
+    transition: all 0.3s;
   }
+  .btn-secondary:hover { border-color: #fff; }
   .social-row {
     display: flex;
     align-items: center;
@@ -139,7 +148,11 @@
     font-size: 0.8rem;
     transition: all 0.3s;
   }
-  .social-row a:hover { color: #fff; border-color: #fff; }
+  .social-row a:hover {
+    color: #fff;
+    border-color: #fff;
+    transform: translateY(-2px);
+  }
   .hero-image {
     display: flex;
     justify-content: center;
@@ -149,7 +162,13 @@
     max-width: 420px;
     border-radius: 20px;
     object-fit: cover;
+    transition: transform 0.5s;
   }
+  .hero-image img:hover {
+    transform: scale(1.02);
+  }
+
+  /* STATS */
   .stats-bar {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -164,9 +183,13 @@
     background: var(--card);
     padding: 32px 20px;
     text-align: center;
+    transition: background 0.3s;
   }
+  .stat-item:hover { background: #1a1a1a; }
   .stat-item h3 { font-size: 1.9rem; margin-bottom: 6px; }
   .stat-item p { font-size: 0.85rem; color: var(--muted); }
+
+  /* SECTIONS */
   section { padding: 0 60px 100px; }
   .section-label {
     font-size: 0.8rem;
@@ -184,6 +207,8 @@
     font-family: 'Playfair Display', serif;
     font-style: italic;
   }
+
+  /* ABOUT */
   .about-grid {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
@@ -206,9 +231,16 @@
     border: 1px solid var(--border);
     border-radius: 14px;
     padding: 24px;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .about-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255,255,255,0.2);
   }
   .about-card h4 { font-size: 0.95rem; margin-bottom: 8px; }
   .about-card p { font-size: 0.85rem; color: var(--muted); }
+
+  /* PROJECTS */
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -219,17 +251,26 @@
     border: 1px solid var(--border);
     border-radius: 16px;
     overflow: hidden;
-    transition: transform 0.35s;
+    transition: transform 0.4s, box-shadow 0.4s;
   }
-  .project-card:hover { transform: translateY(-6px); }
+  .project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  }
   .project-img {
-    height: 200px;
+    height: 210px;
     background-size: cover;
     background-position: center;
+    transition: transform 0.5s;
+  }
+  .project-card:hover .project-img {
+    transform: scale(1.08);
   }
   .project-info { padding: 20px; }
   .project-info h3 { font-size: 1.05rem; margin-bottom: 6px; }
   .project-info p { font-size: 0.85rem; color: var(--muted); }
+
+  /* FOOTER */
   footer {
     border-top: 1px solid var(--border);
     padding: 60px 60px 40px;
@@ -237,7 +278,11 @@
     grid-template-columns: 1.5fr 1fr 1fr 1fr;
     gap: 40px;
   }
-  .footer-brand .logo { font-size: 1.7rem; margin-bottom: 12px; display: block; }
+  .footer-brand .logo {
+    font-size: 1.7rem;
+    margin-bottom: 12px;
+    display: block;
+  }
   .footer-brand p { color: var(--muted); font-size: 0.9rem; }
   .footer-col h4 { font-size: 0.95rem; margin-bottom: 18px; }
   .footer-col a, .footer-col p {
@@ -246,6 +291,7 @@
     text-decoration: none;
     font-size: 0.9rem;
     margin-bottom: 10px;
+    transition: color 0.3s;
   }
   .footer-col a:hover { color: #fff; }
   .footer-bottom {
@@ -258,6 +304,7 @@
     color: var(--muted);
     font-size: 0.85rem;
   }
+
   @media (max-width: 1000px) {
     nav, .hero, section, footer, .stats-bar { padding-left: 24px; padding-right: 24px; }
     .hero { grid-template-columns: 1fr; text-align: center; }
@@ -280,7 +327,7 @@
     <li><a href="#work">Portfolio</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="hire-btn">Collab</a>
+  <a href="#contact" class="collab-btn">Collab</a>
 </nav>
 
 <section class="hero" id="home">
@@ -336,31 +383,31 @@
   <h2 class="section-title">Selected Works</h2>
   <div class="projects-grid">
     <div class="project-card">
-      <div class="project-img" style="background-image: url('videography.jpg');"></div>
+      <div class="project-img" style="background-image: url('https://drive.google.com/thumbnail?id=1hqd_JTi16JTWUT6Ma_ng7IiEAW4Jf5VD&sz=w800');"></div>
       <div class="project-info">
         <h3>Videography</h3>
         <p>Cinematic shoots & visual storytelling</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background-image: url('vlogging.jpg');"></div>
+      <div class="project-img" style="background-image: url('https://drive.google.com/thumbnail?id=1a_Unas3y0Yo9vztxD0iIGD-WVAaNpEhq&sz=w800');"></div>
       <div class="project-info">
         <h3>Vlogging</h3>
         <p>Authentic stories & daily content</p>
       </div>
     </div>
     <div class="project-card">
-      <div class="project-img" style="background-image: url('brand.jpg');"></div>
-      <div class="project-info">
-        <h3>Brand Promotions</h3>
-        <p>Creative campaigns that connect</p>
-      </div>
-    </div>
-    <div class="project-card">
-      <div class="project-img" style="background-image: url('thumbnail.jpg');"></div>
+      <div class="project-img" style="background-image: url('https://drive.google.com/thumbnail?id=1Am5jM5s9iPtpPak0RNDz93zORR51xj7E&sz=w800');"></div>
       <div class="project-info">
         <h3>Thumbnail Designing</h3>
         <p>Bold visuals for events & brands</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-img" style="background-image: url('https://drive.google.com/thumbnail?id=1xsdXq0ZXVTwKyRlThRADGKwWLuq3ujrI&sz=w800');"></div>
+      <div class="project-info">
+        <h3>Collaborations</h3>
+        <p>Brand promotions & creative campaigns</p>
       </div>
     </div>
   </div>
