@@ -3,446 +3,569 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prasad Mamidi | Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+<title>Yesu Vara Prasad Mamidi | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0a0a;
-    --card: #141414;
-    --text: #ffffff;
-    --muted: #a0a0a0;
-    --border: rgba(255,255,255,0.08);
+    --bg: #050505;
+    --electric-wine: #e0115f;
+    --electric-wine-soft: #ff2d6f;
+    --text: #f5f0f2;
+    --text-muted: #a89a9f;
+    --glass: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(255, 255, 255, 0.09);
   }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
+
   body {
     background: var(--bg);
     color: var(--text);
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
+    cursor: none;
   }
 
-  /* NAV */
+  .bg-orbs {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    animation: floatOrb 22s ease-in-out infinite;
+  }
+  .orb-1 {
+    width: 620px; height: 620px;
+    background: radial-gradient(circle, rgba(224,17,95,0.5) 0%, transparent 70%);
+    top: -160px; right: -120px;
+  }
+  .orb-2 {
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, rgba(120,20,60,0.45) 0%, transparent 70%);
+    bottom: -120px; left: -100px;
+    animation-delay: -8s;
+  }
+  .orb-3 {
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(224,17,95,0.22) 0%, transparent 70%);
+    top: 42%; left: 28%;
+    animation-delay: -15s;
+  }
+  @keyframes floatOrb {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    33% { transform: translate(50px,-40px) scale(1.06); }
+    66% { transform: translate(-40px,30px) scale(0.94); }
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .cursor {
+    width: 8px; height: 8px;
+    background: var(--electric-wine);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.25s, height 0.25s;
+    mix-blend-mode: difference;
+  }
+  .cursor-follower {
+    width: 38px; height: 38px;
+    border: 1.5px solid rgba(224,17,95,0.6);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s, height 0.4s, border-color 0.3s, background 0.3s;
+  }
+  .wave {
+    position: fixed;
+    border: 1.5px solid rgba(224,17,95,0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9997;
+    transform: translate(-50%, -50%);
+    animation: waveExpand 1.2s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+  @keyframes waveExpand {
+    0% { width: 16px; height: 16px; opacity: 0.8; }
+    100% { width: 170px; height: 170px; opacity: 0; }
+  }
+
   nav {
     position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
+    top: 0; width: 100%;
+    padding: 26px 60px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 22px 60px;
-    background: rgba(10,10,10,0.85);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
+    align-items: center;
+    z-index: 100;
+    background: linear-gradient(to bottom, rgba(5,5,5,0.93), transparent);
+    backdrop-filter: blur(16px);
   }
   .logo {
-    font-family: 'Great Vibes', cursive;
-    font-size: 1.9rem;
-    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
   }
-  .nav-links {
-    display: flex;
-    gap: 36px;
-    list-style: none;
-  }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
   .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.92rem;
-    transition: color 0.3s;
-  }
-  .nav-links a:hover { color: #fff; }
-  .collab-btn {
-    padding: 10px 24px;
-    border: 1px solid rgba(255,255,255,0.25);
-    border-radius: 50px;
-    color: #fff;
+    color: var(--text-muted);
     text-decoration: none;
     font-size: 0.9rem;
-    transition: all 0.3s;
+    transition: color 0.3s;
   }
-  .collab-btn:hover {
-    background: #fff;
-    color: #000;
-  }
+  .nav-links a:hover { color: var(--electric-wine-soft); }
 
-  /* HERO */
   .hero {
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    align-items: center;
-    padding: 120px 60px 80px;
-    gap: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 60px;
+  }
+  .hero-label {
+    font-size: 0.85rem;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--electric-wine);
+    margin-bottom: 28px;
   }
   .hero h1 {
-    font-size: clamp(3.8rem, 7vw, 5.8rem);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -2px;
-    margin-bottom: 8px;
-  }
-  .hero-role {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2.4rem;
-    color: #d4d4d4;
-    margin-bottom: 24px;
-    display: block;
-  }
-  .hero-desc {
-    font-size: 1.1rem;
-    color: var(--muted);
-    max-width: 480px;
-    margin-bottom: 36px;
-    font-weight: 300;
-    line-height: 1.7;
-  }
-  .hero-btns {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
-  }
-  .btn-primary {
-    background: #fff;
-    color: #000;
-    padding: 14px 28px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(255,255,255,0.15);
-  }
-  .btn-secondary {
-    background: transparent;
-    color: #fff;
-    padding: 14px 28px;
-    border-radius: 50px;
-    border: 1px solid rgba(255,255,255,0.25);
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: all 0.3s;
-  }
-  .btn-secondary:hover { border-color: #fff; }
-  .social-row {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    color: var(--muted);
-    font-size: 0.9rem;
-  }
-  .social-row a {
-    color: var(--muted);
-    text-decoration: none;
-    width: 38px; height: 38px;
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-    transition: all 0.3s;
-  }
-  .social-row a:hover {
-    color: #fff;
-    border-color: #fff;
-    transform: translateY(-2px);
-  }
-  .hero-image {
-    display: flex;
-    justify-content: center;
-  }
-  .hero-image img {
-    width: 100%;
-    max-width: 420px;
-    border-radius: 20px;
-    object-fit: cover;
-    transition: transform 0.5s;
-  }
-  .hero-image img:hover {
-    transform: scale(1.02);
-  }
-
-  /* STATS */
-  .stats-bar {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--border);
-    margin: 0 60px 100px;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-  }
-  .stat-item {
-    background: var(--card);
-    padding: 32px 20px;
-    text-align: center;
-    transition: background 0.3s;
-  }
-  .stat-item:hover { background: #1a1a1a; }
-  .stat-item h3 { font-size: 1.9rem; margin-bottom: 6px; }
-  .stat-item p { font-size: 0.85rem; color: var(--muted); }
-
-  /* SECTIONS */
-  section { padding: 0 60px 100px; }
-  .section-label {
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 12px;
-  }
-  .section-title {
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    font-weight: 600;
-    margin-bottom: 40px;
-  }
-  .section-title em {
     font-family: 'Playfair Display', serif;
-    font-style: italic;
+    font-size: clamp(3.2rem, 7vw, 5.8rem);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -2px;
+    margin-bottom: 28px;
+  }
+  .hero h1 span { color: var(--electric-wine-soft); }
+  .hero-desc {
+    max-width: 560px;
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    margin-bottom: 48px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 36px;
+    border: 1px solid rgba(224,17,95,0.5);
+    color: var(--text);
+    font-size: 0.95rem;
+    text-decoration: none;
+    border-radius: 100px;
+    transition: all 0.4s;
+  }
+  .btn:hover {
+    border-color: var(--electric-wine);
+    box-shadow: 0 0 40px rgba(224,17,95,0.25);
+    transform: translateY(-3px);
   }
 
-  /* ABOUT */
+  section { padding: 140px 60px; }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 600;
+    margin-bottom: 60px;
+  }
+  .section-title span { color: var(--electric-wine); }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 1s cubic-bezier(0.22,1,0.36,1), transform 1s cubic-bezier(0.22,1,0.36,1);
+  }
+  .reveal.active { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  .glass {
+    background: linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
+    backdrop-filter: blur(24px) saturate(180%) brightness(1.05);
+    -webkit-backdrop-filter: blur(24px) saturate(180%) brightness(1.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.12);
+    transition: transform 0.5s, box-shadow 0.5s;
+  }
+  .glass:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 28px 60px rgba(0,0,0,0.5), 0 0 40px rgba(224,17,95,0.2);
+  }
+
   .about-grid {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 50px;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 48px;
   }
-  .about-text p {
-    color: var(--muted);
-    font-size: 1.05rem;
-    margin-bottom: 20px;
-    font-weight: 300;
-    line-height: 1.8;
+  .about-text { font-size: 1.1rem; color: var(--text-muted); font-weight: 300; line-height: 1.8; }
+  .about-text p { margin-bottom: 22px; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .stat-card { padding: 32px; text-align: center; }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    color: var(--electric-wine-soft);
+    margin-bottom: 8px;
   }
-  .about-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  .about-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 24px;
-    transition: transform 0.3s, border-color 0.3s;
-  }
-  .about-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(255,255,255,0.2);
-  }
-  .about-card h4 { font-size: 0.95rem; margin-bottom: 8px; }
-  .about-card p { font-size: 0.85rem; color: var(--muted); }
+  .stat-label { font-size: 0.82rem; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
 
-  /* PROJECTS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+  .skill-card { padding: 36px 32px; }
+  .skill-icon {
+    width: 48px; height: 48px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(224,17,95,0.22), rgba(224,17,95,0.05));
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 24px;
+    font-size: 1.4rem;
+  }
+  .skill-card h3 { font-size: 1.2rem; margin-bottom: 12px; }
+  .skill-card p { font-size: 0.95rem; color: var(--text-muted); font-weight: 300; }
+
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
   }
-  .project-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-    transition: transform 0.4s, box-shadow 0.4s;
-  }
-  .project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-  }
+  .project-card { overflow: hidden; }
   .project-img {
-    height: 210px;
+    height: 240px;
     background-size: cover;
     background-position: center;
-    transition: transform 0.5s;
+    position: relative;
   }
-  .project-card:hover .project-img {
-    transform: scale(1.08);
+  .project-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(5,5,5,0.85), transparent 60%);
   }
-  .project-info { padding: 20px; }
-  .project-info h3 { font-size: 1.05rem; margin-bottom: 6px; }
-  .project-info p { font-size: 0.85rem; color: var(--muted); }
-
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 60px 60px 40px;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    gap: 40px;
-  }
-  .footer-brand .logo {
-    font-size: 1.7rem;
+  .project-content { padding: 32px; }
+  .project-tag {
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--electric-wine);
     margin-bottom: 12px;
-    display: block;
   }
-  .footer-brand p { color: var(--muted); font-size: 0.9rem; }
-  .footer-col h4 { font-size: 0.95rem; margin-bottom: 18px; }
-  .footer-col a, .footer-col p {
-    display: block;
-    color: var(--muted);
+  .project-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.45rem;
+    margin-bottom: 12px;
+  }
+  .project-card p { font-size: 0.95rem; color: var(--text-muted); font-weight: 300; }
+
+  .contact-wrapper {
+    max-width: 820px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 55px;
+    align-items: center;
+  }
+  .profile-img-wrap {
+    width: 190px; height: 190px;
+    border-radius: 50%;
+    position: relative;
+  }
+  .profile-img-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -7px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--electric-wine), transparent 65%);
+    opacity: 0.7;
+    animation: rotateBorder 10s linear infinite;
+  }
+  @keyframes rotateBorder { to { transform: rotate(360deg); } }
+  .profile-img {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 3px solid rgba(255,255,255,0.1);
+    position: relative;
+    z-index: 1;
+  }
+  .contact-text {
+    font-size: 1.12rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    margin-bottom: 36px;
+    line-height: 1.7;
+  }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 14px; }
+  .contact-btn {
+    padding: 15px 26px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 100px;
+    color: var(--text);
     text-decoration: none;
     font-size: 0.9rem;
-    margin-bottom: 10px;
-    transition: color 0.3s;
+    backdrop-filter: blur(16px);
+    transition: all 0.35s;
   }
-  .footer-col a:hover { color: #fff; }
-  .footer-bottom {
-    grid-column: 1 / -1;
-    border-top: 1px solid var(--border);
-    padding-top: 24px;
-    margin-top: 20px;
+  .contact-btn:hover {
+    border-color: var(--electric-wine);
+    box-shadow: 0 0 40px rgba(224,17,95,0.25);
+    transform: translateY(-4px);
+  }
+
+  footer {
+    padding: 40px 60px;
+    border-top: 1px solid rgba(255,255,255,0.05);
     display: flex;
     justify-content: space-between;
-    color: var(--muted);
+    color: var(--text-muted);
     font-size: 0.85rem;
   }
 
-  @media (max-width: 1000px) {
-    nav, .hero, section, footer, .stats-bar { padding-left: 24px; padding-right: 24px; }
-    .hero { grid-template-columns: 1fr; text-align: center; }
-    .hero-desc { margin: 0 auto 36px; }
-    .hero-btns, .social-row { justify-content: center; }
+  @media (max-width: 900px) {
+    nav, .hero, section, footer { padding-left: 28px; padding-right: 28px; }
+    .about-grid, .contact-wrapper { grid-template-columns: 1fr; }
+    .profile-img-wrap { margin: 0 auto 24px; }
     .nav-links { display: none; }
-    .stats-bar { grid-template-columns: 1fr 1fr; margin: 0 24px 60px; }
-    .about-grid, .projects-grid, footer { grid-template-columns: 1fr; }
-    .about-cards { grid-template-columns: 1fr 1fr; }
   }
 </style>
 </head>
 <body>
 
+<div class="bg-orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursorFollower"></div>
+
 <nav>
-  <div class="logo">prasadmamidi.</div>
+  <div class="logo">PRASAD MAMIDI</div>
   <ul class="nav-links">
-    <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#work">Portfolio</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#work">Work</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="collab-btn">Collab</a>
 </nav>
 
-<section class="hero" id="home">
-  <div>
-    <h1>PRASAD<br>MAMIDI</h1>
-    <span class="hero-role">Influencer & Creator</span>
-    <p class="hero-desc">
-      Video Editor, Videographer & Aspiring Software Developer crafting visual stories and building digital experiences.
-    </p>
-    <div class="hero-btns">
-      <a href="#work" class="btn-primary">View My Work →</a>
-      <a href="#contact" class="btn-secondary">Let’s Connect</a>
+<section class="hero">
+  <div class="hero-label">Influencer · Creator · Developer</div>
+  <h1>Yesu Vara<br>Prasad <span>Mamidi</span></h1>
+  <p class="hero-desc">
+    Influencer, Video Editor & Videographer crafting visual stories — 
+    and an aspiring Software Developer building the future one line of code at a time.
+  </p>
+  <a href="#contact" class="btn">Let’s Connect →</a>
+</section>
+
+<section id="about">
+  <h2 class="section-title reveal">About <span>Me</span></h2>
+  <div class="about-grid">
+    <div class="about-text reveal reveal-delay-1">
+      <p>I’m Yesu Vara Prasad Mamidi — a content creator, video editor, and videographer who loves turning ideas into engaging visual stories.</p>
+      <p>Alongside content creation, I’m on a journey into software development — learning to build digital products that combine creativity with technology.</p>
+      <p>Whether it’s behind the camera, in the edit timeline, or writing code, my goal is the same: create work that feels intentional, polished, and memorable.</p>
     </div>
-    <div class="social-row">
-      Let’s Connect
-      <a href="https://www.linkedin.com/in/prasad-mamidi-716387341" target="_blank">in</a>
-      <a href="https://www.instagram.com/prasadmamidii" target="_blank">ig</a>
-      <a href="https://youtube.com/@prasadmamidivlogs" target="_blank">yt</a>
-      <a href="mailto:yesuvaraprasadmamidi@gmail.com">✉</a>
+    <div class="stats reveal reveal-delay-2">
+      <div class="glass stat-card">
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Projects</div>
+      </div>
+      <div class="glass stat-card">
+        <div class="stat-number">4+</div>
+        <div class="stat-label">Years Creating</div>
+      </div>
+      <div class="glass stat-card">
+        <div class="stat-number">15+</div>
+        <div class="stat-label">Collaborations</div>
+      </div>
+      <div class="glass stat-card">
+        <div class="stat-number">2+</div>
+        <div class="stat-label">Years Coding</div>
+      </div>
     </div>
-  </div>
-  <div class="hero-image">
-    <img src="https://drive.google.com/thumbnail?id=1X7splHOdYsyimK41mdN2C9d0d6lHATin&sz=w1000" alt="Prasad Mamidi">
   </div>
 </section>
 
-<div class="stats-bar">
-  <div class="stat-item"><h3>20+</h3><p>Projects Completed</p></div>
-  <div class="stat-item"><h3>15+</h3><p>Happy Clients</p></div>
-  <div class="stat-item"><h3>4+</h3><p>Years Creating</p></div>
-  <div class="stat-item"><h3>2+</h3><p>Years Learning Code</p></div>
-</div>
-
-<section id="about">
-  <div class="section-label">ABOUT ME</div>
-  <h2 class="section-title">Creating With Purpose,<br>Driven By <em>Creativity.</em></h2>
-  <div class="about-grid">
-    <div class="about-text">
-      <p>I’m Yesu Vara Prasad Mamidi — an influencer, video editor and videographer who loves turning ideas into engaging visual stories.</p>
-      <p>Alongside content creation, I’m learning software development to build digital products that combine creativity with technology.</p>
+<section id="skills">
+  <h2 class="section-title reveal">What I <span>Do</span></h2>
+  <div class="skills-grid">
+    <div class="glass skill-card reveal reveal-delay-1">
+      <div class="skill-icon">▶</div>
+      <h3>Video Editing</h3>
+      <p>High-energy edits, smooth transitions and storytelling optimized for social platforms.</p>
     </div>
-    <div class="about-cards">
-      <div class="about-card"><h4>Experience</h4><p>Years of creating content, editing videos and capturing stories.</p></div>
-      <div class="about-card"><h4>Focus</h4><p>Videography, Brand Promotions, Thumbnail Design & Vlogging.</p></div>
-      <div class="about-card"><h4>Tools</h4><p>Premiere Pro, CapCut, Canva, Photoshop & more.</p></div>
-      <div class="about-card"><h4>Approach</h4><p>Creative, detail-oriented and audience-focused.</p></div>
+    <div class="glass skill-card reveal reveal-delay-2">
+      <div class="skill-icon">◎</div>
+      <h3>Videography</h3>
+      <p>Capturing moments with intention — from cinematic shots to authentic everyday content.</p>
+    </div>
+    <div class="glass skill-card reveal reveal-delay-3">
+      <div class="skill-icon">◈</div>
+      <h3>Content Creation</h3>
+      <p>Building personal brand through consistent and engaging content across platforms.</p>
+    </div>
+    <div class="glass skill-card reveal">
+      <div class="skill-icon">◈</div>
+      <h3>Software Development</h3>
+      <p>Aspiring developer learning to turn ideas into real digital products and experiences.</p>
     </div>
   </div>
 </section>
 
 <section id="work">
-  <div class="section-label">FEATURED PROJECTS</div>
-  <h2 class="section-title">Selected Works</h2>
+  <h2 class="section-title reveal">Selected <span>Work</span></h2>
   <div class="projects-grid">
-    <div class="project-card">
+
+    <div class="glass project-card reveal reveal-delay-1">
       <div class="project-img" style="background-image: url('https://drive.google.com/thumbnail?id=1hqd_JTi16JTWUT6Ma_ng7IiEAW4Jf5VD&sz=w800');"></div>
-      <div class="project-info">
-        <h3>Videography</h3>
-        <p>Cinematic shoots & visual storytelling</p>
+      <div class="project-content">
+        <div class="project-tag">Videography</div>
+        <h3>Visual Storytelling</h3>
+        <p>Capturing real moments and turning them into polished, engaging visual narratives.</p>
       </div>
     </div>
-    <div class="project-card">
+
+    <!-- Only Vlogging is clickable -->
+    <a href="https://youtube.com/@prasadmamidivlogs" target="_blank" class="glass project-card reveal reveal-delay-2" style="text-decoration: none; color: inherit;">
       <div class="project-img" style="background-image: url('https://drive.google.com/thumbnail?id=1a_Unas3y0Yo9vztxD0iIGD-WVAaNpEhq&sz=w800');"></div>
-      <div class="project-info">
-        <h3>Vlogging</h3>
-        <p>Authentic stories & daily content</p>
+      <div class="project-content">
+        <div class="project-tag">Vlogging</div>
+        <h3>Daily Stories</h3>
+        <p>Authentic vlogs and lifestyle content that connect with the audience.</p>
       </div>
-    </div>
-    <div class="project-card">
+    </a>
+
+    <div class="glass project-card reveal reveal-delay-3">
       <div class="project-img" style="background-image: url('https://drive.google.com/thumbnail?id=1Am5jM5s9iPtpPak0RNDz93zORR51xj7E&sz=w800');"></div>
-      <div class="project-info">
-        <h3>Thumbnail Designing</h3>
-        <p>Bold visuals for events & brands</p>
+      <div class="project-content">
+        <div class="project-tag">Thumbnail Design</div>
+        <h3>Event & Brand Visuals</h3>
+        <p>Bold and eye-catching thumbnails for events, promotions and content.</p>
       </div>
     </div>
-    <div class="project-card">
-      <div class="project-img" style="background-image: url('https://drive.google.com/thumbnail?id=1xsdXq0ZXVTwKyRlThRADGKwWLuq3ujrI&sz=w800');"></div>
-      <div class="project-info">
-        <h3>Collaborations</h3>
-        <p>Brand promotions & creative campaigns</p>
+
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="section-title reveal">Let’s <span>Connect</span></h2>
+  <div class="contact-wrapper reveal">
+    <div class="profile-img-wrap">
+      <img src="https://lh3.googleusercontent.com/d/1FW72dj7WQZ2-Cpaz1OisDAzKG6CD5XjJ=w1000" alt="Yesu Vara Prasad Mamidi" class="profile-img">
+    </div>
+    <div>
+      <p class="contact-text">
+        Open to collaborations, content projects, video work, and conversations around creative ideas or software development.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:yesuvaraprasadmamidi@gmail.com" class="contact-btn">yesuvaraprasadmamidi@gmail.com</a>
+        <a href="tel:+919398334458" class="contact-btn">+91 93983 34458</a>
+        <a href="https://www.linkedin.com/in/prasad-mamidi-716387341" target="_blank" class="contact-btn">LinkedIn</a>
+        <a href="https://www.instagram.com/prasadmamidii" target="_blank" class="contact-btn">@prasadmamidii</a>
+        <a href="https://www.instagram.com/prasadmamidivlogs" target="_blank" class="contact-btn">@prasadmamidivlogs</a>
+        <a href="https://youtube.com/@prasadmamidivlogs" target="_blank" class="contact-btn">YouTube</a>
       </div>
     </div>
   </div>
 </section>
 
-<footer id="contact">
-  <div class="footer-brand">
-    <span class="logo">prasadmamidi.</span>
-    <p>Creating visuals that inspire and make an impact.</p>
-  </div>
-  <div class="footer-col">
-    <h4>Quick Links</h4>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#work">Portfolio</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <div class="footer-col">
-    <h4>Get In Touch</h4>
-    <a href="mailto:yesuvaraprasadmamidi@gmail.com">yesuvaraprasadmamidi@gmail.com</a>
-    <a href="tel:+919398334458">+91 93983 34458</a>
-    <p>Andhra Pradesh, India</p>
-  </div>
-  <div class="footer-col">
-    <h4>Social</h4>
-    <a href="https://www.linkedin.com/in/prasad-mamidi-716387341" target="_blank">LinkedIn</a>
-    <a href="https://www.instagram.com/prasadmamidii" target="_blank">@prasadmamidii</a>
-    <a href="https://www.instagram.com/prasadmamidivlogs" target="_blank">@prasadmamidivlogs</a>
-    <a href="https://youtube.com/@prasadmamidivlogs" target="_blank">YouTube</a>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2025 Prasad Mamidi. All Rights Reserved.</span>
-    <span>Crafted with intention</span>
-  </div>
+<footer>
+  <div>© 2025 Yesu Vara Prasad Mamidi. All rights reserved.</div>
+  <div>Crafted with intention</div>
 </footer>
 
+<script>
+  const cursor = document.getElementById('cursor');
+  const follower = document.getElementById('cursorFollower');
+  let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top = mouseY + 'px';
+  });
+
+  function animateFollower() {
+    followerX += (mouseX - followerX) * 0.12;
+    followerY += (mouseY - followerY) * 0.12;
+    follower.style.left = followerX + 'px';
+    follower.style.top = followerY + 'px';
+    requestAnimationFrame(animateFollower);
+  }
+  animateFollower();
+
+  document.querySelectorAll('a, .glass, .btn').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.width = '16px'; cursor.style.height = '16px';
+      follower.style.width = '56px'; follower.style.height = '56px';
+      follower.style.borderColor = 'rgba(224,17,95,0.9)';
+      follower.style.background = 'rgba(224,17,95,0.05)';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.width = '8px'; cursor.style.height = '8px';
+      follower.style.width = '38px'; follower.style.height = '38px';
+      follower.style.borderColor = 'rgba(224,17,95,0.6)';
+      follower.style.background = 'transparent';
+    });
+  });
+
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    if (Math.abs(window.scrollY - lastScroll) > 12) createWave(mouseX, mouseY);
+    lastScroll = window.scrollY;
+  }, { passive: true });
+
+  function createWave(x, y) {
+    if (document.querySelectorAll('.wave').length > 4) return;
+    const wave = document.createElement('div');
+    wave.className = 'wave';
+    wave.style.left = x + 'px';
+    wave.style.top = y + 'px';
+    document.body.appendChild(wave);
+    setTimeout(() => wave.remove(), 1200);
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('active');
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
